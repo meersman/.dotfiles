@@ -1,2 +1,16 @@
 [core]
 	editor = emacs -nw
+[push]
+	default = current
+[diff]
+	tool = tkdiff
+[name]
+	name = jmeersman
+[user]
+	email = meersman.john@gmail.com	
+	name = jmeersman
+[credential "https://git.overleaf.com"]
+	username = jmeersman@email.arizona.edu
+	helper = cache
+[credential]
+	helper = cache --timeout 3600

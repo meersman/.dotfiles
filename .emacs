@@ -35,6 +35,18 @@
 (add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
 (setq vc-follow-symlinks t)
 
+;; Enable mouse support in terminal
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)   ;; capture mouse events in terminal
+  (defun track-mouse (e)) ;; prevent errors
+  (setq mouse-sel-mode t))
+
+;; Optional: make scrolling smoother
+(setq scroll-step 1
+      scroll-conservatively 10000
+      scroll-margin 0)
+
 ;; Stop at top of file when scrolling upwards
 (setq scroll-error-top-bottom nil)
 
@@ -42,7 +54,7 @@
 (setq split-height-threshold nil)
 (setq split-width-threshold 0)
 
-;; line numbering and highlighting
+;; line numbering and highlighting deprecated for newer Emacs
 ;; (global-linum-mode t)
 ;; (setq linum-format "% 4d  ")
 ;; (set-face-attribute 'linum nil :background "black")
