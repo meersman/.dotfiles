@@ -20,8 +20,8 @@ alias cp='cp -i -p'
 alias mv='mv -i'
 alias clean='rm -f ._*; rm -i *~ '
 alias work='cd /Volumes/scratch01'
-alias python='python3'
-alias pip='pip3'
+# alias python='python3'
+# alias pip='pip3'
 
 # Personal
 alias eog='imgcat'

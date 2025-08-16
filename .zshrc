@@ -9,12 +9,8 @@ ZSH_THEME="gallois"
 CASE_SENSITIVE="false"
 HYPHEN_INSENSITIVE="false"
 DISABLE_AUTO_UPDATE="true"
-# export UPDATE_ZSH_DAYS=13
 DISABLE_LS_COLORS="false"
 #
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 HIST_STAMPS="yyyy-mm-dd"
 #
 # Load plogins (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -35,10 +31,7 @@ else
 fi
 #
 # Set command line prompt path to top_dir/.../dir1/dir2
-# PROMPT='%{$fg[cyan]%}[%(4~|%-1~/.../%2~|%3~)% ]%(?.%{$fg[green]%}.%{$fg[red]%})%B$%b '
-#
-export LS_COLORS="di=01;34:ow=01;36:tw=01;33:ln=01;35:ex=01;32:fi=0"
-#
+export LS_COLORS="di=01;34:ow=01;36:tw=01;33:ln=01;35:ex=01;32:fi=0"#
 export PROMPT='%F{red}%n%f@%F{green}%m%f:%F{cyan}[%(4~|%-1~/.../%2~|%3~)% ]%f %# '
 #
 # Compilation flags
@@ -54,16 +47,26 @@ export PROMPT='%F{red}%n%f@%F{green}%m%f:%F{cyan}[%(4~|%-1~/.../%2~|%3~)% ]%f %#
 dod_user=meersman
 ua_net_id=jmeersman
 #
-########################alias tecplot='/usr/local/tecplot360ex/bin/tec360 -mesa'
 # Source local .alias file if one exists
 if [ -f "$HOME/.alias" ]; then
     source "$HOME/.alias"
 fi
 #
 # Define path
-PATH=/bin:/usr/local/bin:/usr/bin:${PATH}
-export PATH=$HOME/bin:${PATH}
-export PATH=/usr/local/tecplot360ex/bin:${PATH}
+# PATH=/bin:/usr/local/bin:/usr/bin:${PATH}
+# export PATH=$HOME/bin:${PATH}
+# Build PATH from scratch each time - no duplicates possible
+typeset -U path  # -U flag removes duplicates automatically
+path=(
+    $HOME/bin
+    /opt/homebrew/bin
+    /usr/local/bin
+    /bin
+    /usr/bin
+    /usr/sbin
+    /sbin
+)
+export PATH
 #
 # Set DYLD library path (fix for gcc libraries on mac)
 if [[ -z "$DYLD_LIBRARY_PATH" ]]; then
@@ -81,19 +84,12 @@ fi
 #
 # add directories to library path
 export LD_LIBRARY_PATH=$HOME/lib:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=/lib:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=/lib64:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=$HOME/local/install/lib:$LD_LIBRARY_PATH
-#export LD_LIBRARY_PATH=/opt/tecplot/bin:$LD_LIBRARY_PATH
+#
 if [ -d $LIBRARY_PATH ]; then
     export LIBRARY_PATH="/usr/local/lib"
 fi
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 #
-# Anaconda settings
-#
-export PATH=~/opt/anaconda3/bin:${PATH}
-export PATH=~/opt/anaconda3/condabin:${PATH}
+# test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 #
 #KERBEROS
 export KRB5_CONFIG=/usr/local/krb5/etc/krb5.conf
@@ -106,13 +102,32 @@ export OMPI_CC=gcc-9
 export OMPI_FC=gfortran-9
 #
 # Created by `pipx` on 2025-08-08 22:30:49
-export PATH="$PATH:/Users/jmeersman/.local/bin"
+# export PATH="$PATH:/Users/jmeersman/.local/bin"
 #
+#==========================================================================
 # Modules setup
+#==========================================================================
 # Initialize modules (Apple Silicon path)
 if [ -f $(brew --prefix modules)/init/zsh ]; then
     source $(brew --prefix modules)/init/zsh
 fi
-#
 # Set module path
 export MODULEPATH="/opt/homebrew/modulefiles:$MODULEPATH"
+#
+echo PATH4 $PATH
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/jmeersman/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/jmeersman/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/jmeersman/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/jmeersman/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
