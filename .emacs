@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-;; enable fortran syntax highlighting
+;; Set programming modes
 (setq column-number-indicator-zero-based nil)
 (setq auto-mode-alist (cons '("\\.F90$" . f90-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.F$" . f90-mode) auto-mode-alist))
@@ -38,9 +38,8 @@
 ;; Enable mouse support in terminal
 (unless window-system
   (require 'mouse)
-  (xterm-mouse-mode t)   ;; capture mouse events in terminal
-  (defun track-mouse (e)) ;; prevent errors
-  (setq mouse-sel-mode t))
+  (xterm-mouse-mode t)     ;; capture mouse events in terminal
+  (defun track-mouse (e))) ;; prevent errors
 
 ;; Optional: make scrolling smoother
 (setq scroll-step 1
@@ -112,3 +111,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; Make arrow navigation work like linux but with
+;; (global-set-key (kbd "C-<right>") 'forward-word)
+;; (global-set-key (kbd "C-<left>")  'backward-word)
+;; (global-set-key (kbd "C-<down>")  'forward-paragraph)
+;; (global-set-key (kbd "C-<up>")    'backward-paragraph)
