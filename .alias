@@ -1,9 +1,9 @@
 # Applications
-alias tecplot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
-alias tepclot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
-alias teclot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
-alias tec='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
-alias tec360='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
+# alias tecplot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
+# alias tepclot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
+# alias teclot='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
+# alias tec='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
+# alias tec360='open -a /Applications/Tecplot\ 360\ EX\ 2025\ R1/Tecplot\ 360\ EX\ 2025\ R1.app/'
 alias matlab='/Applications/MATLAB_R2016a.app/bin/./matlab'
 alias matlab='/Applications/MATLAB_R2025a.app/bin/matlab'
 alias nowinmatlab='/Applications/MATLAB_R2025a.app/bin/matlab -nodesktop -nosplash'
@@ -20,12 +20,19 @@ alias df='df -h'
 alias cp='cp -i -p'
 alias mv='mv -i'
 alias clean='rm -f ._*; rm -i *~ '
-alias work='cd ~/data'
+alias data='cd ~/data'
 alias work1='cd /Volumes/scratch01'
+alias work2='cd /Volumes/scratch02'
 
 # Personal
 alias eog='imgcat'
-alias csrc='source $HOME/.zshrc' 
+alias csrc='source $HOME/.zshrc'
+alias reload='source $HOME/.zshrc' 
+alias epath='echo $PATH | tr ":" "\n"'
+alias myip= 'curl -s https://ipinfo.io/ip'
+alias speed='curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python'
+alias now='date +"%Y-%m-%d %H:%M:%S"'
+#alias ml='module list'
 
 ########################## CFD Lab Machines ##########################
 # merlin
@@ -62,6 +69,7 @@ alias xuahpc='ssh -X jmeersman@hpc.arizona.edu'
 
 ########################## DoD HPC Machines ##########################
 # login command to get kerberos ticket for DoD login
+alias dod='kinit "$dod_user"@HPCMP.HPC.MIL'
 alias dodlogin='kinit "$dod_user"@HPCMP.HPC.MIL'
 #
 # warhawk
@@ -83,3 +91,11 @@ alias sftpnautilus='sftp "$dod_user"@nautilus.navydsrc.hpc.mil'
 # carpenter
 alias carpenter='ssh -Y "$dod_user"@carpenter.erdc.hpc.mil'
 alias sftpcarpenter='sftp "$dod_user"@carpenter.erdc.hpc.mil'
+
+#################### Functions (bc zsh is dumb)  ####################
+editw() {
+    edit "$(which "$1")"
+}
+findname() { # pos zsh cant do even the most simple things
+         find . -name "'$1'"
+}
