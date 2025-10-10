@@ -1,10 +1,6 @@
-# Setup environment
-set dod_user=$user
+# Setup tcsh environment
 #
-mkdir -p ~/lib
-mkdir -p ~/bin
-#
-# Other quality of life (more like zsh or bash on Mac)
+# Quality of life (more like zsh or bash on Mac)
 set history = 5000              # Set longer history
 set savehist = (5000 merge)     # Merge across terminal instances
 set histfile = ~/.tcsh_history
