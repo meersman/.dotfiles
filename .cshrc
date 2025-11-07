@@ -54,7 +54,8 @@ if (-f $HOME/.alias) then
 endif
 #
 # load additional modules
-module purge
+# module purge
+# module switch PrgEnv-cray PrgEnv-intel
 module load --silent PrgEnv-intel
 module load --silent tecplot
 module load --silent cfd++
