@@ -23,6 +23,7 @@ alias clean='rm -f ._*; rm -i *~ '
 alias data='cd ~/data'
 alias work1='cd /Volumes/scratch01'
 alias work2='cd /Volumes/scratch02'
+alias rpwd='cd $PWD'
 
 # Personal
 alias eog='imgcat'
