@@ -24,6 +24,7 @@ alias b='cd ../'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../'
+alias rpwd='cd $PWD'
 
 # Misc
 alias h='history 25'
