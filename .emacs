@@ -17,6 +17,8 @@
 (setq auto-mode-alist (cons '("\\.cshrc" . sh-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.alias" . sh-mode) auto-mode-alist))
 (setq auto-mode-alist (cons '("\\.glf" . tcl-mode) auto-mode-alist))
+(add-to-list 'magic-mode-alist
+             '("^#%Module" . tcl-mode))
 (setq line-number-mode t)
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
