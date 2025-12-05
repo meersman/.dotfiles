@@ -103,6 +103,10 @@ alias sftpnautilus='sftp "$dod_user"@nautilus.navydsrc.hpc.mil'
 # carpenter
 alias carpenter='ssh -Y "$dod_user"@carpenter.erdc.hpc.mil'
 alias sftpcarpenter='sftp "$dod_user"@carpenter.erdc.hpc.mil'
+#
+# barfoot
+alias barfoot='ssh -Y "$dod_user"@barfoot.erdc.hpc.mil'
+alias sftpbarfoot='sftp "$dod_user"@barfoot.erdc.hpc.mil'
 
 #################### Functions (bc zsh is dumb)  ####################
 editw() {
